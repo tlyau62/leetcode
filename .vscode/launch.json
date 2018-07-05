@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/74_searchMatrix.js"
+            "program": "${workspaceFolder}/263_isUgly.js"
         }
     ]
 }
