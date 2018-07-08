@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/263_isUgly.js"
+            "program": "${workspaceFolder}/graph/207_canFinish.js"
         }
     ]
 }
