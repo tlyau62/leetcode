@@ -1,7 +1,7 @@
 /**
- * dfs + dp => cycle detection
- * with dp 68ms (beats 97%)
- * no dp 120ms (beats 40%)
+ * dfs + mem => cycle detection
+ * with mem 68ms (beats 97%)
+ * no mem 120ms (beats 40%)
  * 
  * @param {number} numCourses
  * @param {number[][]} prerequisites
