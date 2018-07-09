@@ -9,14 +9,14 @@
  */
 var canFinish = function (numCourses, prerequisites) {
     const graph = []; // hash table (adj list)
-    const visited = []; // hash table for current dfs, true => dp[i] is visited, else not visited
-    const dp = []; // hash table for current and previous dfs
+    const visited = []; // hash table for current dfs, true => node i is visited, else not visited
+    const mem = []; // hash table for current and previous dfs
 
-    // init graph struct, visited & dp
+    // init graph struct, visited & mem
     for (let i = 0; i < numCourses; i++) {
         graph[i] = [];
         visited[i] = false;
-        dp[i] = false;
+        mem[i] = false;
     }
 
     // init graph edge
@@ -40,12 +40,12 @@ var canFinish = function (numCourses, prerequisites) {
         if (visited[node]) { // contains cycle
             visited[node] = false; // reset visited for next node
             return false;
-        } else if (dp[node]) {  // contains no cycle
+        } else if (mem[node]) {  // contains no cycle
             return true;
         }
 
         visited[node] = true;
-        dp[node] = true;
+        mem[node] = true;
 
         let isCyclic = true;
         for (let i = 0; i < graph[node].length && isCyclic; i++) {
@@ -55,7 +55,7 @@ var canFinish = function (numCourses, prerequisites) {
         // reset visited for next node
         visited[node] = false;
 
-        // no need to reset or clean up dp, even if this branch has a cycle
+        // no need to reset or clean up mem, even if this branch has a cycle
         // since if it has a cycle, then the solution is false already
 
         return isCyclic;
