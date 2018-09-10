@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/graph/207_canFinish.js"
+            "program": "${workspaceFolder}/ds/stack/331_isValidSerialization.js"
         }
     ]
 }
