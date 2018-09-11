@@ -1,3 +1,6 @@
+// problem:
+// https://leetcode.com/problems/next-greater-element-i/
+
 /**
  * if you search directly findNums on nums,
  * then you are on the wrong track.

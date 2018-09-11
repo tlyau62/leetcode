@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/ds/stack/331_isValidSerialization.js"
+            "program": "${workspaceFolder}/alg/unclass/901_stockspanner.js"
         }
     ]
 }
