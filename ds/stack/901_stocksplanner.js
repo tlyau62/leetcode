@@ -8,6 +8,7 @@
  * mind flow:
  * 1. reminds me the question 496 on leetcode
  * 2. focus on key phase "starting from today and going backwards"
+ *    - stack works
  * 3. consider 2 cases
  * - prices = [1, 2, 3, 4] => output [1, 2, 3, 4]
  *   - element 1 waits to be collected by any elements >= 1 (which is 2) with the sum frequency 2
