@@ -6,5 +6,16 @@ algorthm and data structure written in Javascript, plus some classic algorithms 
 
 # Folders
 - alg: questions about algorithm problems
+    - divide conquer
+    - geometry
+    - math
+    - optimization (dynamic programming, greedy)
+    - sequence (merge, search, selection, sorting)
+    - union find
 - design: question about design problems
 - ds: question about data structure problems
+    - array
+    - linked list
+    - stack
+    - key (hash table, set)
+    - tree
