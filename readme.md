@@ -6,7 +6,6 @@ algorthm and data structure written in Javascript, plus some classic algorithms 
 
 # Folders
 - alg: questions about algorithm problems
-    - divide conquer
     - geometry
     - math
     - optimization (dynamic programming, greedy)
