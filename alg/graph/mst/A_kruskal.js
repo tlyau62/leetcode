@@ -2,17 +2,23 @@
 // find minimum spanning tree using kruskal's algorithm
 // with union find data structure
 //
-// not optimized
+// not optimized on union find
+// if optimized, time: O(V + E lg E) = O(E lg E)
+// someone said O(E lg V) => https://stackoverflow.com/questions/20432801/time-complexity-of-the-kruskal-algorithm
+//
+// counting sort is applicable => time reduced to O(E)
+// extra notes:
+// https://www.quora.com/Why-cant-we-use-count-sort-as-a-general-purpose-sorting-algorithm
 
 function kruskal(G) {
     const sets = [];
 
-    // makeset, start from 1 vertex per set 
+    // makeset, start from 1 vertex per set; O(V)
     for (let i = 0; i < G.length; i++) {
         sets[i] = i;
     }
 
-    // sort edges
+    // sort edges; O(E lg E)
     const edges = [];
     for (let i = 0; i < G.length; i++) {
         for (const e of G[i]) {
@@ -21,7 +27,7 @@ function kruskal(G) {
     }
     edges.sort((a, b) => a[2] - b[2]);
 
-    // main kruskal
+    // main kruskal; O(E)
     const X = []; // mst
     for (const e of edges) {
         const u_parent = find(e[0]),
