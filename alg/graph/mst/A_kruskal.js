@@ -1,5 +1,5 @@
 // Algorithms by SCU, P. 132 (ch. 5)
-// find minimum spanning tree using kruskal's algorithm
+// find minimum spanning tree using kruskal's algorithm (greedy)
 // with union find data structure
 //
 // not optimized on union find
