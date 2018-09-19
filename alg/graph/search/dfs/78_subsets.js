@@ -14,6 +14,38 @@ var subsets = function (nums) {
     return res;
 
     function dfs(pos, acc) {
+        if (pos === nums.length) {
+            res.push(acc);
+            return;
+        }
+        dfs(pos + 1, [...acc]);
+        dfs(pos + 1, [...acc, nums[pos]]);
+    }
+};
+
+/**
+ * perm [1,2]
+ *       1          1
+ *      / \ 
+ *     /   \
+ *    []   [1]      2
+ *   /  \  / \
+ *  /    \/   \
+ * []  [2][1] [1,2]
+ */
+
+var subsets2 = function (nums) {
+
+    if (nums.length === 0) {
+        return [[]];
+    }
+
+    const res = [];
+    dfs(0, []);
+
+    return res;
+
+    function dfs(pos, acc) {
         let t, f;
         t = acc.slice();
         f = acc.slice();
