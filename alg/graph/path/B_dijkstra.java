@@ -1,3 +1,4 @@
+
 // Algorithms by SCU, p. 113 (ch. 4)
 // find shortest path with dijkstra algorithm
 //
@@ -17,15 +18,18 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class B_dijkstra {
+
     private static int[] dijk(Integer[][][] G, int s) {
-        // distances from s to the rest vertices
-        int[] dist = new int[G.length];
+        int[] dist = new int[G.length]; // distances from s to the rest vertices
+        boolean[] visited = new boolean[G.length]; // need for undirected graph
 
         // init distances for source & the rest vertices
         for (int i = 0; i < dist.length; i++) {
             dist[i] = Integer.MAX_VALUE;
+            visited[i] = false;
         }
         dist[s] = 0;
+        visited[s] = true;
 
         // main dijkstra
         PriorityQueue<Integer> Q = new PriorityQueue<>((a, b) -> dist[a] - dist[b]);
@@ -35,15 +39,17 @@ public class B_dijkstra {
         int newDist;
         while (!Q.isEmpty()) {
             u = Q.remove();
+            visited[u] = true;
+
             for (Integer[] v : G[u]) {
                 newDist = dist[u] + v[1];
-                if (newDist < dist[v[0]]) {
+                if (!visited[v[0]] && newDist < dist[v[0]]) {
                     dist[v[0]] = newDist;
                     Q.remove(v[0]);
                     Q.add(v[0]);
                 }
             }
-            
+
             // print current queue
             // System.out.println(Q);
         }
