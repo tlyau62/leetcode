@@ -1,4 +1,7 @@
 /**
+ * problem:
+ * https://leetcode.com/problems/longest-word-in-dictionary/description/
+ * 
  * mind flow:
  * 1. build 1 char by 1 char => similar to prefix tree,
  *    so try with prefix tree
