@@ -1,4 +1,7 @@
 /**
+ * problem:
+ * https://leetcode.com/problems/smallest-range-i/description/
+ * 
  * mind flow:
  * 1. reminds me leetcode 462
  *    - https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/description/
