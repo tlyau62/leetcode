@@ -1,4 +1,7 @@
 /**
+ * problem:
+ * https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/description/
+ * 
  * mind flow:
  * 1. if all elements are the same, then the min move is 0
  * 2. if add 1 different element into this array, then the min move is abs(mode?? of nums - new value)
