@@ -28,3 +28,22 @@ var preorderTraversal = function (root) {
         preorder(node.right);
     }
 };
+
+// applicable to n-ary tree
+var preorderTraversal2 = function (root) {
+
+    const nums = [];
+
+    if (root !== null) {
+        preorder(root);
+    }
+
+    return nums;
+
+    function preorder(node) {
+        nums.push(node.val);
+        for (const next of [node.left, node.right]) {
+            next && preorder(next);
+        }
+    }
+};
