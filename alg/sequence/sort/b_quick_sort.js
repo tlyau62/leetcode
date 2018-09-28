@@ -1,5 +1,8 @@
 function quick_sort(nums, left, right) {
 
+    // left === right => 0 element
+    // left < right => 1 element
+
     if (left < right) {
         const p = parition(nums, left, right);
         quick_sort(nums, left, p - 1);
