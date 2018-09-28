@@ -92,4 +92,3 @@ console.log(nums.join(',') === nums2.join(','));
  * 5 3 11 10 2
  * 5 3 2 10 11
  */
-
