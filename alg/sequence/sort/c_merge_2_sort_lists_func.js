@@ -6,12 +6,12 @@ function merge(A, B) {
         return B;
     } else if (B.length === 0) {
         return A;
+    }
+
+    if (A[0] < B[0]) {
+        return [A[0], ...merge(A.slice(1), B)];
     } else {
-        if (A[0] < B[0]) {
-            return [A[0]].concat(merge(A.slice(1), B));
-        } else {
-            return [B[0]].concat(merge(A, B.slice(1)));
-        }
+        return [B[0], ...merge(A, B.slice(1))];
     }
 }
 
