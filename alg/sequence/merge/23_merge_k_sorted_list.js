@@ -1,5 +1,7 @@
+// problem:
+// https://leetcode.com/problems/merge-k-sorted-lists/description/
+//
 // solve using min heap, always keep track of the min element among the k-list
-// heap implementation modify from https://gist.github.com/tpae/54ec7371f947505967a2036b9c002428
 
 class MinHeap {
 
