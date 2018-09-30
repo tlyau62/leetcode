@@ -60,8 +60,7 @@ class Twitter {
     }
 
     /**
-     * similar to merge k sorted list problem. time => O(max heap depth) => O(lg n),
-     * where n is the number of followees of current user. Retrieve the 10 most
+     * similar to merge k sorted list problem. Retrieve the 10 most
      * recent tweet ids in the user's news feed. Each item in the news feed must be
      * posted by users who the user followed or by the user herself. Tweets must be
      * ordered from most recent to least recent.
@@ -71,6 +70,7 @@ class Twitter {
         ArrayList<Integer> feeds = new ArrayList<>();
         PriorityQueue<Post> feedQ = new PriorityQueue<>((a, b) -> b.time - a.time);
 
+        // O(n)
         // fromUsers => whose feeds are needed to be extracted, included the user and
         // all its followees
         fromUsers.add(userId);
@@ -78,6 +78,7 @@ class Twitter {
             fromUsers.addAll(socials.get(userId));
         }
 
+        // O(n lg n)
         // add latest post of each followees to the heap
         ArrayList<Post> postList;
         for (Integer uid : fromUsers) {
@@ -87,6 +88,7 @@ class Twitter {
             }
         }
 
+        // O(lg n)
         // get feeds
         Post post;
         while (feeds.size() < 10 && !feedQ.isEmpty()) {
