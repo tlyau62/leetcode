@@ -4,17 +4,17 @@
  */
 // O(max(n,m))
 Set.prototype.union = function (set) {
-    return [...this, ...set];
+    return new Set([...this, ...set]);
 }
 
 // O(n)
 Set.prototype.intersects = function (set) {
-    return [...this].filter((e) => set.has(e));
+    return new Set([...this].filter((e) => set.has(e)));
 }
 
 // O(n)
 Set.prototype.minus = function (set) {
-    return [...this].filter((e) => !set.has(e));
+    return new Set([...this].filter((e) => !set.has(e)));
 }
 
 /**
