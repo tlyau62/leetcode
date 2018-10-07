@@ -20,7 +20,7 @@ Set.prototype.equals = function (set) {
 function vertex_cover(states, stations) {
     let min_stations = null;
 
-    dfs(-1, new Set(), []);
+    dfs(-1, new Set(), []); // -1: start checking on empty set of cur_union_states
 
     return min_stations;
 
