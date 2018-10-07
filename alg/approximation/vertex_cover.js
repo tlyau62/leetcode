@@ -18,30 +18,28 @@ Set.prototype.equals = function (set) {
  * return the minimal set of stations that cover all the states
  */
 function vertex_cover(states, stations) {
-    let cur_set, cur_stations, min_set, min_stations;
+    let min_stations = null;
 
-    min_set = min_stations = null;
+    dfs(-1, new Set(), []);
 
-    for (let i = 0; i < stations.length; i++) {
-        cur_set = new Set();
-        cur_stations = [];
+    return min_stations;
 
-        for (let j = i; j < stations.length; j++) {
-            cur_set = cur_set.union(stations[j]);
-            cur_stations.push(j);
-
-            if (cur_set.equals(states)) {
-                if (min_stations === null || cur_stations.length < min_stations.length) {
-                    min_stations = cur_stations;
-                    min_set = cur_set;
-                }
+    function dfs(cur_station, cur_union_states, cur_stations) {
+        // update min stations
+        if (cur_union_states.equals(states)) {
+            if (min_stations === null || cur_stations.length < min_stations.length) {
+                min_stations = cur_stations;
+                // debug: console.log(cur_union_states);
             }
+        }
+
+        // move to next station
+        if (++cur_station < stations.length) {
+            dfs(cur_station, cur_union_states.union(stations[cur_station]), [...cur_stations, cur_station]);
+            dfs(cur_station, cur_union_states, cur_stations);
         }
     }
 
-    console.log(min_set);
-
-    return min_stations;
 }
 
 const states = new Set(['mt', 'wa', 'or', 'id', 'nv', 'ut', 'ca', 'az']);
