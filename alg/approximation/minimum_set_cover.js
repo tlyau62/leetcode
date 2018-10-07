@@ -65,6 +65,14 @@ function set_cover(states, stations) {
  *   - number of stations to choose: n (worst case)
  *   - number of stations to consider in each choice: n
  * - return the set of stations that cover all the states close to minimal
+ * - counter example:
+ *   - U = {1,2,3,4,5,6,7,8,9}
+ *   -     S        access order 1    access order 2
+ *     {1,2,3,4},         3                 1
+ *     {2,3,4,5},         1
+ *     {4,5,6,7},                           2
+ *     {6,7,8},           2
+ *     {8,9}              4                 3
  */
 function set_cover_approx(states, stations) {
     const final_stations = [];
