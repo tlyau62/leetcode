@@ -1,4 +1,10 @@
 /**
+ * reference:
+ * 1. grokking algorithm ch.8
+ * 2. https://en.wikipedia.org/wiki/Set_cover_problem
+ */
+
+/**
  * set operations
  */
 Set.prototype.union = function (set) {
@@ -27,7 +33,7 @@ Set.prototype.substract = function (set) {
  * - time: O(2^n)), total number subset = 2^n
  * - return the minimal set of stations that cover all the states
  */
-function vertex_cover(states, stations) {
+function set_cover(states, stations) {
     let min_stations = null;
 
     dfs(-1, new Set(), []); // -1: start checking on empty set of cur_union_states
@@ -60,7 +66,7 @@ function vertex_cover(states, stations) {
  *   - number of stations to consider in each choice: n
  * - return the set of stations that cover all the states close to minimal
  */
-function vertex_cover_approx(states, stations) {
+function set_cover_approx(states, stations) {
     const final_stations = [];
 
     let states_need = new Set([...states]);
@@ -98,5 +104,5 @@ const stations = [
     new Set(['nv', 'ut']),
     new Set(['ca', 'az'])
 ];
-console.log(vertex_cover(states, stations)); // [0, 1, 2, 4]
-console.log(vertex_cover_approx(states, stations)); // [0, 1, 2, 4]
+console.log(set_cover(states, stations)); // [0, 1, 2, 4]
+console.log(set_cover_approx(states, stations)); // [0, 1, 2, 4]
