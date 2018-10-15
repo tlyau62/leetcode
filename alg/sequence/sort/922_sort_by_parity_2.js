@@ -10,7 +10,6 @@ var sortArrayByParityII_opt = function (A) {
     const res = [];
 
     for (let i = 0; i < A.length; i++) {
-        let idx;
         if (A[i] % 2 === 0) {
             res[evenIdx] = A[i];
             evenIdx += 2;
