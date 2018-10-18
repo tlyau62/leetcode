@@ -11,6 +11,15 @@
  *    such that solving for each branch once is enough to solve the whole problem
  * 4. dfs can be used
  * 5. see 820_short_encoding_words.png conclusion
+ * 6. test cases
+ *    ["time","me"]
+ *    ["time", "me", "bell"]
+ *    ["time", "me", "bell", "me", "bell", "me", "bell"]
+ *    ["time","e","me","em","ime","emi","mie","eim","aime","ttime"]
+ *    ["time","e","mie"]
+ *    ["time","aime"]
+ *    ["aef","bef","af"]
+ *    ["aef","bef","af","fa","affa","faaf"]
  * 
  * @param {string[]} words
  * @return {number}
