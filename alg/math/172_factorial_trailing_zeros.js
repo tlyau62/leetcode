@@ -2,6 +2,9 @@
  * problem:
  * https://leetcode.com/problems/factorial-trailing-zeroes/description/
  * 
+ * explain:
+ * calculate number of paris of factors of (2, 5), since 2 * 5 = 10, give 1 zero
+ * 
  * @param {number} n
  * @return {number}
  */
