@@ -3,7 +3,7 @@
 // - by not building an array containing all the values and returning them all at once
 // - a generator yields the values one at a time
 // - requires less memory and allows the caller to get started processing the first few values immediately
-// - useful in dp algorithm
+// - useful in dp algorithm, not to compute everything to step n starting from 0
 // 
 // ref:
 // - https://en.wikipedia.org/wiki/Generator_(computer_programming)
