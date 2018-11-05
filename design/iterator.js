@@ -99,12 +99,7 @@
     party.addPerson(new Person('Tom', ['watch tv', 'play football']));
 
     // general iterator implementation
-    let it = party.viewAllPeople();
-    let result = it.next();
-    while (!result.done) {
-        console.log(result.value);
-        result = it.next();
-    }
+    console.log([...party.viewAllPeople()]);
 
     // party.viewAllPeople() always produce a iterator
     console.log([...party.viewAllPeople()]);
