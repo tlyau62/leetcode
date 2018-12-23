@@ -10,7 +10,7 @@
  */
 var deckRevealedIncreasing = function (deck) {
     const result = [];
-    let state, deck_i;
+    let state, deck_i, res_i;
 
     state = 0;
     res_i = deck_i = 0;
