@@ -1,0 +1,45 @@
+<html>
+
+<body>
+    <div id="room1">
+        <p class="lightbulb">on</p>
+        <button class="switch">switch</button>
+    </div>
+
+    <div id="room2">
+        <p class="lightbulb">on</p>
+        <button class="switch">switch</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        let isLightbulbOn = true; // 1. how to eliminate this global var?
+
+        $('#room1 .switch').click(function () {
+            isLightbulbOn = !isLightbulbOn;
+            $('#room1 .lightbulb').text(isLightbulbOn ? 'on' : 'off'); // 2. how to stop specify the behavior of the light blub
+        });
+
+        // notes:
+        // 3. if $('#room1 .switch').click(...) is removed, the behavior of the lightblub is lost also
+    </script>
+    <script>
+        $('#room2 .lightbulb').on('light:toggle', function () {
+            const $lightblub = $(this);
+            const isOn = ((b = true) => b)($lightblub.data('isOn')); // now lightblub manages its own data:isLightblubOn
+
+            $lightblub.text(isOn ? 'off' : 'on'); // now lightblub manages its own behavior
+
+            $lightblub.data('isOn', !isOn);
+        });
+
+        $('#room2 .switch').click(function () {
+            $('#room2 .lightbulb').trigger('light:toggle'); // delegate the behavior to the light blub
+        });
+
+        // notes:
+        // if $('#room1 .switch').click(...) is removed, the behavior of the lightblub is still remain
+    </script>
+</body>
+
+</html>
