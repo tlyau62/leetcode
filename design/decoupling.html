@@ -1,13 +1,22 @@
 <html>
 
 <body>
+    <!-- no decoupling -->
     <div id="room1">
         <p class="lightbulb">on</p>
         <button class="switch">switch</button>
     </div>
 
+    <!-- decoupling -->
     <div id="room2">
         <p class="lightbulb">on</p>
+        <button class="switch">switch</button>
+    </div>
+
+    <!-- decoupling + oop -->
+    <div id="room3">
+        <p class="lightbulb" id="bulb1">on</p>
+        <p class="lightbulb" id="bulb2">off</p>
         <button class="switch">switch</button>
     </div>
 
@@ -39,6 +48,50 @@
 
         // notes:
         // if $('#room1 .switch').click(...) is removed, the behavior of the lightblub is still remain
+    </script>
+    <script>
+        class Lightbulb {
+            constructor(selector) {
+                this._$lightbulb = $(selector);
+                this._isOn = this._$lightbulb.text() === 'on';
+            }
+
+            init() {
+                if (!this._$lightbulb) {
+                    throw new Error('Lightbulb not found');
+                }
+                this._$lightbulb.on('light:toggle', () => this.toggle());
+            }
+
+            toggle() {
+                this._isOn = !this._isOn;
+                this._$lightbulb.text(this._isOn ? 'on' : 'off');
+            }
+        }
+
+        class Switch {
+            constructor(selector) {
+                this._switch = $(selector);
+            }
+
+            init() {
+                if (!this._switch) {
+                    throw new Error('Switch not found');
+                }
+
+                this._switch.click(this.switch);
+            }
+
+            switch() {
+                $('#room3 .lightbulb').trigger('light:toggle');
+            }
+        }
+
+        const rm3Bulb1 = new Lightbulb('#bulb1'),
+            rm3Bulb2 = new Lightbulb('#bulb2');
+        const rm3Switch = new Switch('#room3 .switch');
+
+        [rm3Bulb1, rm3Bulb2, rm3Switch].forEach(el => el.init());
     </script>
 
     <!-- ref
