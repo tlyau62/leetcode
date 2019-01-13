@@ -54,13 +54,20 @@
             constructor(selector) {
                 this._$lightbulb = $(selector);
                 this._isOn = this._$lightbulb.text() === 'on';
-            }
 
-            init() {
                 if (!this._$lightbulb) {
                     throw new Error('Lightbulb not found');
                 }
-                this._$lightbulb.on('light:toggle', () => this.toggle());
+
+                this.register();
+            }
+
+            register() {
+                this._$lightbulb.on('toggle.light', () => this.toggle());
+            }
+
+            destroy() {
+                this._$lightbulb.off('toggle.light');
             }
 
             toggle() {
@@ -72,31 +79,36 @@
         class Switch {
             constructor(selector) {
                 this._switch = $(selector);
-            }
 
-            init() {
                 if (!this._switch) {
                     throw new Error('Switch not found');
                 }
 
-                this._switch.click(this.switch);
+                this.register();
+            }
+
+            register() {
+                this._switch.on('click.switch', () => this.switch());
+            }
+
+            destroy() {
+                this._switch.off('click.switch');
             }
 
             switch() {
-                $('#room3 .lightbulb').trigger('light:toggle');
+                $('#room3 .lightbulb').trigger('toggle.light');
             }
         }
 
         const rm3Bulb1 = new Lightbulb('#bulb1'),
             rm3Bulb2 = new Lightbulb('#bulb2');
         const rm3Switch = new Switch('#room3 .switch');
-
-        [rm3Bulb1, rm3Bulb2, rm3Switch].forEach(el => el.init());
     </script>
 
     <!-- ref
     1. https://learn.jquery.com/events/introduction-to-custom-events/
     2. https://modernweb.com/decoupling-with-custom-jquery-events/
+    3. http://api.jquery.com/off/
     -->
 </body>
 
