@@ -14,10 +14,17 @@
  * @param {number[]} numbers array of number (expensive checking => requires clause)
  */
 function productList(numbers) {
-    return numbers.reduce((a, e) => product(a * e));
+    return numbers.reduce((a, e) => {
+        let prod = product(a * e);
 
-    // require: a, b are numbers (context of use is local => requires clause)
+        return prod === -1 ? 1 : prod;
+    });
+
+    // require: a, b are non-negative numbers (context of use is local => requires clause + special return values)
     function product(a, b) {
+        if (a < 0 || b < 0) {
+            return -1;
+        }
         return a * b;
     }
 }
