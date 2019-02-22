@@ -69,10 +69,6 @@
  * @param {number[][]} grid
  * @return {number}
  */
-/**
- * @param {number[][]} grid
- * @return {number}
- */
 var orangesRotting = function (grid) {
     let nodes, level, numRotten, numFreshOrange;
 
