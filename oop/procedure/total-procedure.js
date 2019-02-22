@@ -1,6 +1,6 @@
 /**
  * Total procedure
- * - a procedure which its behavior is specified for all legal inputs
+ * - a procedure is defined over the entire input domain
  * - should be used in library
  */
 

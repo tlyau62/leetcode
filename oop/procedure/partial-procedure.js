@@ -1,10 +1,10 @@
 /**
  * Partial procedure
- * - a procedure which its behavior is NOT specified for all legal inputs
+ * - a procedure is NOT defined over the entire input domain
  * - spec of a partial procedure always contains a requires clause
- * - less safe than total
- *   - use when the context of use is limited (not in library), or
- *   - enable substantial benefits, such as better performance
+ * - less safe than total, use when
+ *   - the context of use is local, or
+ *   - enable substantial benefits (e.g. better performance) 
  */
 
 /**
