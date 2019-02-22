@@ -1,9 +1,12 @@
 /**
  * How to use exceptions?
- * - effects section must defined what causes the procedure to terminate with each exception, and
- *   what is its behavior is in each case
- * - if a procedure signals an exception for a certain subset of arguments, that subsets should not
- *   be excluded in the requires clause
+ * - effects clause must defined
+ *   - what causes the procedure to terminate with each exception, and
+ *   - what is its behavior is in each case
+ * - if a procedure signals an exception for a certain subset of arguments,
+ *   then that subsets should be excluded in the requires clause
+ * - procedure header should list all (unchecked & checked) exceptions it throws
+ *   - reason: any exception that occur is of interest (without this info, you can't understand how to use the procedure)
  */
 function search(a, x) {
     // Requires: a is sorted
