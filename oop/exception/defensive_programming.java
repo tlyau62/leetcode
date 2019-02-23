@@ -20,7 +20,7 @@ class Main {
      * @param a integer
      * @param b non-zero integer
      */
-    static void div(int a, int b) {
+    static double div(int a, int b) {
         if (b == 0) {
             throw new FailureException();
         }

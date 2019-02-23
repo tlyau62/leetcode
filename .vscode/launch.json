@@ -5,10 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/alg/unclass/135_candy.js"
+            "program": "${workspaceFolder}/alg/state-machine/moore.js"
         }
     ]
 }
