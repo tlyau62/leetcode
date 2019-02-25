@@ -1,7 +1,7 @@
 /**
  * Checked exception
  * - user is required to provide the exception handling at compile time (java)
- * - delegate the checking tasks to other module
+ * - delegate the checking tasks to other module, and assume no problem occurs
  *   - these checking tasks usually are NOT under programmer control
  *
  * Unchecked exception
