@@ -1,6 +1,6 @@
 # Specifications for Data Abstractions
 - mainly comments
-- can be compiled, but the program cannot run using the code (p. 83)
+- can be compiled, but the program cannot run using the code until it is implemented (p.83)
 - when a data abstraction is first invented, all that exists is the specification
   - almost all code in the class, e.g. method body is missing
   - later, when the data abstraction is implemented, this code is added
