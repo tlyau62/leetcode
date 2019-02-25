@@ -1,6 +1,6 @@
 /**
  * Data abstraction 
- * - abstract from the representation details
+ * - abstract from the representation (rep)
  * - consists of a set of object plus a set of operations
  *   - data abstraction = (objects, operations)
  *   - only operations can access the representation of the objects
@@ -10,7 +10,7 @@
  * - "obj.x = val" vs "obj.setX(val)"
  *   - https://softwareengineering.stackexchange.com/questions/21802/when-are-getters-and-setters-justified
  */
-// representation details
+// representation
 typedef struct person {
     char* name;
     int age;
