@@ -8,6 +8,12 @@
 /**
  * problem: https://leetcode.com/problems/interval-list-intersections/description/
  * 
+ * mind flow:
+ * 1. use 1 pointer to store range of any 1 list => seem difficult
+ * 2. use 2 pointers to store range of any 1 list
+ *    => find out 2 major case (this 2 range ptr is mutual exclusive or not)
+ * 3. brute force all cases
+ * 
  * @param {Interval[]} A
  * @param {Interval[]} B
  * @return {Interval[]}
