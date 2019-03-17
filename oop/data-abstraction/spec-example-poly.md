@@ -1,3 +1,4 @@
+```java
 /**
  * Poly
  * - immutable class
@@ -41,3 +42,4 @@ public class Poly {
         //   returns the Poly this * q
     }
 }
+```

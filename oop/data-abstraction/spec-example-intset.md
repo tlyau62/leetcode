@@ -1,3 +1,4 @@
+```java
 /**
  * IntSet
  * - since a constructor always modifies this (initialization), we don't bother to indicate the modification in the modifies clause
@@ -6,6 +7,7 @@
  * - EmptyException is unchecked
  *   - because preventation can be done by checking size (under programmer control)
  */
+// @java-ignore
 public class IntSet {
     // OVERVIEW: IntSets are mutable, unbounded sets of integers.
     // A typical IntSet is {x1, ..., xn}
@@ -39,3 +41,4 @@ public class IntSet {
         // returns an arbitrary element of this.
     }
 }
+```
