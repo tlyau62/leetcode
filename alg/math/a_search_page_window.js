@@ -15,8 +15,12 @@ function searchPageBound(minPageNo, maxPageNo, curPageNo, windowSize) {
     const bound = (windowSize - 1) / 2;
     let min, max;
 
-    if (curPageNo < minPageNo || curPageNo > maxPageNo || windowSize <= 0 || windowSize > maxPageNo - minPageNo + 1) {
+    if (curPageNo < minPageNo || curPageNo > maxPageNo || windowSize <= 0) {
         throw new Error('out of range');
+    }
+
+    if (windowSize >= maxPageNo - minPageNo + 1) {
+        return { min: minPageNo, max: maxPageNo };
     }
 
     min = curPageNo - ~~bound;
@@ -68,5 +72,13 @@ console.log(res);
 console.log(res.max - res.min + 1);
 
 res = searchPageBound(0, 999, 11, 10);
+console.log(res);
+console.log(res.max - res.min + 1);
+
+res = searchPageBound(0, 3, 2, 10);
+console.log(res);
+console.log(res.max - res.min + 1);
+
+res = searchPageBound(0, 9, 2, 10);
 console.log(res);
 console.log(res.max - res.min + 1);
