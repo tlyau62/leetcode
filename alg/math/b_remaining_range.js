@@ -1,12 +1,20 @@
 /**
- * {min: 0, max: 99}
+ * Problem:
+ * Given a available range and a set of occupied range.
+ * Find the remaining range that is not occupied.
  * 
+ * e.g. 1
+ * available range = {min: 0, max: 99}
  * occup range: [{min: 5, max: 5}]
- * avail range: [{min: 0, max: 4}, {min: 6, max: 99}]
+ * remain: [{min: 0, max: 4}, {min: 6, max: 99}]
  * 
+ * e.g. 2
+ * available range = {min: 0, max: 99}
  * occup range: [{min: 5, max: 5}, {min: 8, max: 13}]
  * avail range: [{min: 0, max: 4}, {min: 6, max: 7}, {min: 14, max: 99}]
  * 
+ * e.g. 3
+ * available range = {min: 0, max: 99}
  * occup range: [{min: 0, max: 99}]
  * avail range: []
  */
@@ -129,8 +137,10 @@ function Range(min, max) {
 
         for (const occup of occups) {
             if (cmp.max + 1 >= occup.min) {
+                // current occup can be extended
                 cmp.max = Math.max(cmp.max, occup.max);
             } else {
+                // current occup cannot be extended, so a gap is found
                 result.push(new Range(cmp.max + 1, occup.min - 1));
                 cmp = occup;
             }
