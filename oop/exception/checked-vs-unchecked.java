@@ -1,35 +1,28 @@
 /**
  * Checked exception
- * - user is required to provide the exception handling at compile time (java)
- * - delegate the checking tasks to other module, and assume no problem occurs
- *   - these checking tasks usually are NOT under programmer control
- *
- * Unchecked exception
- * - user is optional to provide the exception handling (javascript, C#)
- * - check ALL reason which will cause the procedure to fail
- *   - these checking tasks usually are under programmer control
+ * - expecting the program NOT to crash if the procedure requires are not fullfilled
+ *   - user is required to provide the exception handling
  */
-// assume FileReader throws checked exception
-public static void main(String[] args) {
-    FileReader file;
-    
-    try {
-        file = new FileReader("C:\\test\\a.txt"); // delegate the checking tasks to OS
-        // continue...
-    } catch (IOException ex) {
-        // analyze the exception and do recovery...
+public static int getInt(int[] nums, int i) {
+    if (i < 0 || i >= nums.length) {
+        throw new RuntimeException("invalid range access");
     }
+    return nums[i];
 }
 
-// assume FileReader throws unchecked exception (prevention + defensive programming)
-public static void main(String[] args) {
-    FileReader file;
-    String filePath = "C:\\test\\a.txt";
-    
-    // maybe more errors need be checked
-    if (isFileExists(filePath) && isFileHasReadPermission(filePath) && isFileCorrupted(filePath) && isFileUsing(filePath) && ...) {
-        // continue...
-    } else {
-        // analyze the errors and do recovery...
+/**
+ * Unchecked exception
+ * - expecting the program to crash if the procedure requires are not fullfilled
+ *   - the error is caused by user faults
+ * - uncheck should be used only if
+ *   - use when context of use is local, or
+ *   - the errors are proved can never occur, or
+ *   - the checks are costly
+ */
+public static int getInt(int[] nums, int i) {
+    if (i < 0 || i >= nums.length) {
+        throw new ArrayIndexOutOfBounds();
     }
+    
+    return nums[i];
 }

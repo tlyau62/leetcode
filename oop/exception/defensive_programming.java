@@ -6,9 +6,6 @@
  *   - throw unchecked exception (e.g. FailureException) when requires clause is not satistifed
  *   - headers of procedures should not list FailureException
  *   - procedure spec should not mention throw FailureException
- * - check should be disabled only if
- *   - the errors are proved can never occur, or
- *   - the checks are costly
  */
 class Main {
     public static void main(String[] args) {        
