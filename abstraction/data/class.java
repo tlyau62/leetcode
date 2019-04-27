@@ -1,8 +1,7 @@
 /**
- * Data abstraction (class)
+ * Class
  * - abstract data representation(rep) by operations
  * - data abstraction = (objects, operations)
- * - has a context: record, data structure, ...
  */
 class Type {
     /**
