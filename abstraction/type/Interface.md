@@ -1,5 +1,6 @@
 # Interface (specification)
-abstract common behaviors that classes must implement
+abstract the classes must implement the specified behaviors
+- without this, how to make sure the classes have implemented the common behaviors?
 
 ```java
 /* how to abstract the common fields and method? */
