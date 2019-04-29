@@ -1,4 +1,6 @@
 # iteration abstration
+abstract iteration
+
 ```js
 function some_algorithm() {
     /* some codes before */
@@ -28,7 +30,7 @@ function some_algorithm() {
 }
 ```
 
-# method 1: procedure parameterization
+## method 1: procedure parameterization
 space: O(n), need extra space to save the primes result
 ```js
 class Primes {
@@ -62,7 +64,7 @@ function some_algorithm() {
 }
 ```
 
-# method 2: iterator and generator + procedure parameterization
+## method 2: iterator and generator + procedure parameterization
 space: O(1)
 ```js
 class Primes {
