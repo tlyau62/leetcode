@@ -6,3 +6,4 @@ reference
 - http://teddy-chen-tw.blogspot.com/2013/08/factory-method-pattern.html
 - https://carsonwah.github.io/factory-design-pattern.html
 - https://chercher.tech/kotlin/factory-design-pattern-kotlin
+- https://stackoverflow.com/questions/3314333/factory-method-pattern-to-avoid-instantiation-of-objects-based-on-conditional-lo
