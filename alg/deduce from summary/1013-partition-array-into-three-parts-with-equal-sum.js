@@ -1,5 +1,6 @@
 /**
- * problem: https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/
+ * Partition Array Into Three Parts With Equal Sum
+ * ref: [https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/]
  * 
  * @param {number[]} A
  * @return {boolean}
