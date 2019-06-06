@@ -1,54 +1,66 @@
-// no decorator pattern
-class FileReader {
-    fun openFile() {};
+open class FileReader() {
+    open fun openFile(path: String) {
+        println("opening $path");
+    }
 }
 
 class BufferedFileReader: FileReader {
-    fun bufferFile() {};
-}
-
-class EncryptedBufferedFileReader: BufferedFileReader {
-    fun encryptBufferedFile() {};
-}
-
-class EncryptedFileReader: FileReader {
-    fun encryptFile() {};
-}
-
-// decorator pattern
-class FileReader {
-    fun openFile() {};
-}
-
-class BufferedFileReader: FileReader {
-    private var _fileReader: FileReader;
+    private val _fileReader: FileReader;
     
     constructor(fileReader: FileReader) {
         _fileReader = fileReader;
     }
 
-    fun bufferFile() {
-        // _fileReader.openFile();
-    };
+    // all methods of FileReader must be overriden
+    override fun openFile(path: String) {
+        _fileReader.openFile(path);
+        bufferFile();
+    }
+
+    private fun bufferFile() {
+        println("buffering the opened file");
+    }
 }
 
 class EncryptedFileReader: FileReader {
-    private var _fileReader: FileReader;
-    private var _bufferedFileReader: FileReader;
+    private val _fileReader: FileReader;
     
     constructor(fileReader: FileReader) {
         _fileReader = fileReader;
     }
 
     constructor(bufferedFileReader: BufferedFileReader) {
-        _bufferedFileReader = bufferedFileReader;
+        _fileReader = bufferedFileReader;
     }
 
-    fun encryptFile() {
-        // _fileReader.openFile();
-    };
+    // all methods of FileReader must be overriden
+    override fun openFile(path: String) {
+        _fileReader.openFile(path);
 
-    fun encryptBufferedFile() {
-        // _bufferedFileReader.bufferFile();
-    };
+        // this if-case can be abstracted by strategy pattern        
+		if (_fileReader is BufferedFileReader) {
+			encryptBufferedFile();
+		} else {
+           	encryptFile();    
+        }
+    }
+
+    private fun encryptFile() {
+        println("encrypting the opened file");
+    }
+
+    private fun encryptBufferedFile() {
+        println("encrypting the opened and buffered file");
+    }
+}
+
+fun main(args: Array<String>) {
+    val bufferedReader = BufferedFileReader(FileReader());
+    val encryptedBufferedFileReader = EncryptedFileReader(bufferedReader);
+    val encryptedFileReader = EncryptedFileReader(FileReader());
+	val path = "c://test.pdf";
+    
+    bufferedReader.openFile(path);
+    encryptedBufferedFileReader.openFile(path);
+    encryptedFileReader.openFile(path);
 }
