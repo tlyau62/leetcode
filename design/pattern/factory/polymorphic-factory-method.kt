@@ -1,64 +1,59 @@
 // model
-abstract class Document {
-    abstract fun open();
+data class File(val name: String, val type: String) {}
+
+abstract class Viewer {
+    abstract fun open()
 }
 
-class OfficeDocument: Document() {
+class TextViewer: Viewer() {
     override fun open() {
-        println("opening with ms office");
+        println("opening with ms office")
     }
 }
 
-class PdfDocument: Document() {
+class PdfViewer: Viewer() {
     override fun open() {
-        println("opening with adobe viewer");
+        println("opening with adobe viewer")
     }
 }
 
-class HtmlDocument: Document() {
+class HtmlViewer: Viewer() {
     override fun open() {
-        println("opening with chrome");
-    }
-}
-
-class MarkdownDocument: Document() {
-    override fun open() {
-        println("opening with vscode");
+        println("opening with chrome")
     }
 }
 
 // factory
 abstract class ViewerFactory() {
-    abstract fun createViewer(type: String): Document?;
+    abstract fun createViewer(): Viewer
 }
 
-// default implementation
-class DefaultViewerFactory: ViewerFactory() {
-    override fun createViewer(type: String): Document? = when (type) {
-        "doc", "docx" -> OfficeDocument();
-        "pdf" -> PdfDocument();
-        else -> null;
-    }
+class TextViewerFactory: ViewerFactory() {
+    override fun createViewer(): Viewer = TextViewer()
 }
 
-// new implementation
-class AdvancedViewerFactory: ViewerFactory() {
-    override fun createViewer(type: String): Document? = when (type) {
-        "doc", "docx" -> OfficeDocument();
-        "pdf" -> PdfDocument();
-        "html" -> HtmlDocument();
-        "md" -> MarkdownDocument();
-        else -> null;
+class PdfViewerFactory: ViewerFactory() {
+    override fun createViewer(): Viewer = PdfViewer()
+}
+
+class HtmlViewerFactory: ViewerFactory() {
+    override fun createViewer(): Viewer = HtmlViewer()
+}
+
+// service
+class ViewerService(var viewerFactoryResolver: Map<String, ViewerFactory>) {   
+    fun openFile(file: File) {
+        viewerFactoryResolver[file.type]!!.createViewer().open();
     }
 }
 
 // main
 fun main(args: Array<String>) {
-    var isAdmin = true;
-    var factory = if (isAdmin) AdvancedViewerFactory() else DefaultViewerFactory();
-    var docViewer = factory.createViewer("doc");
-    var htmlViewer = factory.createViewer("html");
+    val depMap = mapOf(
+        "txt" to TextViewerFactory(),
+        "pdf" to PdfViewerFactory(),
+        "html" to HtmlViewerFactory())
+    var viewerService = ViewerService(depMap)
     
-    docViewer?.open() ?: println("no access right");
-    htmlViewer?.open() ?: println("no access right");
+    viewerService.openFile(File("myhomepage", "txt"));
 }
