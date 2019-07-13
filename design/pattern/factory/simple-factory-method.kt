@@ -1,39 +1,50 @@
 // model
-abstract class Car {
-    abstract fun drive();
+data class File(val name: String, val type: String) {}
+
+abstract class Viewer {
+    abstract fun open()
 }
 
-class RedCar: Car() {
-    override fun drive() {
-        println("driving red car");
+class TextViewer: Viewer() {
+    override fun open() {
+        println("opening with ms office")
     }
 }
 
-class BlueCar: Car() {
-    override fun drive() {
-        println("driving blue car");
+class PdfViewer: Viewer() {
+    override fun open() {
+        println("opening with adobe viewer")
     }
 }
 
-// factory
-class CarFactory() {
-    fun createCarFromColor(color: String): Car? {                
-        when (color) {
-            "RED" -> return RedCar();
-            "BLUE" -> return BlueCar();
-            else -> return null;
-    	}
+class HtmlViewer: Viewer() {
+    override fun open() {
+        println("opening with chrome")
+    }
+}
+
+class ViewerFactory {
+    companion object {
+        // static method
+        fun createViewer(type: String) : Viewer? = when(type) {
+            "txt" -> TextViewer()
+            "pdf" -> PdfViewer()
+            "html" -> HtmlViewer()
+            else -> null
+        }
+    }
+}
+
+// service
+class ViewerService() {   
+    fun openFile(file: File) {
+        ViewerFactory.createViewer(file.type)!!.open()
     }
 }
 
 // main
 fun main(args: Array<String>) {
-    var factory = CarFactory();
-    var blueCar = factory.createCarFromColor("BLUE");
-    var redCar = factory.createCarFromColor("RED");
-    var blackCar = factory.createCarFromColor("BLACK");
+    var viewerService = ViewerService()
     
-    blueCar?.drive() ?: println("no such car");
-    redCar?.drive() ?: println("no such car");
-    blackCar?.drive() ?: println("no such car");
+    viewerService.openFile(File("myhomepage", "txt"))
 }

@@ -43,7 +43,7 @@ class HtmlViewerFactory: ViewerFactory() {
 // service
 class ViewerService(var viewerFactoryResolver: Map<String, ViewerFactory>) {   
     fun openFile(file: File) {
-        viewerFactoryResolver[file.type]!!.createViewer().open();
+        viewerFactoryResolver[file.type]!!.createViewer().open()
     }
 }
 
@@ -55,5 +55,5 @@ fun main(args: Array<String>) {
         "html" to HtmlViewerFactory())
     var viewerService = ViewerService(depMap)
     
-    viewerService.openFile(File("myhomepage", "txt"));
+    viewerService.openFile(File("myhomepage", "txt"))
 }
