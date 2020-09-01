@@ -1,7 +1,22 @@
 # Terms
-- functional programming (fp)
-- pure function
-- side effect
-- currying
-- partial application
-- pointfree style
+## functional programming (fp)
+programming paradigm
+
+## pure function
+A pure function is a function that, given the same input, will always return the same output and does not have any observable side effect.
+
+## side effect
+A side effect is a change of system state or observable interaction with the outside world that occurs during the calculation of a result.
+
+## currying
+You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments
+
+## partial application
+the process of fixing a number of arguments to a function, producing another function of smaller arity
+
+
+## pointfree style
+a programming paradigm in which function definitions do not identify the arguments (or "points") on which they operate
+
+## referential transparent
+an expression is called referentially transparent if it can be replaced with its corresponding value without changing the program's behavior
